@@ -1,0 +1,79 @@
+// TERROR, FANTASIA, FICÇÃO CIENTÍFICA, ANIMAÇÃO, SUSPENSE, AVENTURA, AÇÃO 
+// homem aranha no aranhaverso, 10 FANTASIA, ANIMAÇÃO, AVENTURA, AÇÃO
+// carros, LIVRE FANTASIA, ANIMAÇÃO, AVENTURA
+// jogos mortais X 18 TERROR, SUSPENSE
+// como treinar seu dragão, LIVRE FANTASIA, ANIMAÇÃO, AVENTURA, AÇÃO
+// vingadores ultimato, 12 FICÇÃO CIENTÍFICA, AÇÃO, FANTASIA
+// venom tempo de carnificina, 14 FANTASIA, FICÇÃO CIENTÍFICA, AÇÃO
+// megatubarão, 14 AÇÃO, SUSPENSE
+// five nights at freddys, 14 TERROR, SUSPENSE FICÇÃO CIENTÍFICA, FANTASIA
+// o rei leão, LIVRE AVENTURA, ANIMAÇÃO, FANTASIA, 
+// viva a vida é uma festa, LIVRE AVENTURA, ANIMAÇÃO, FANTASIA 
+
+let campoIdade;
+let campoAnimacao;
+let campoAventura;
+let campoFiccaocientifica;
+let campoSuspense;
+
+function setup() {
+  createCanvas(600, 200);
+  createElement("h3", "Minhas Recomendações");
+  createSpan("Sua idade:");
+  campoIdade = createInput("10");
+  campoSuspense = createCheckbox("Gosta de suspense?");
+  campoFiccaocientifica = createCheckbox("Gosta de ficção cientifica?");
+  campoAventura = createCheckbox("Gosta de aventura?");
+  campoAnimacao = createCheckbox("Gosta de animação?");
+}
+
+function draw() {
+  background(" #607D8B ");
+  let idade = campoIdade.value();
+  let gostaDeSuspense = campoSuspense.checked();
+  let gostaDeFiccaocientifica = campoFiccaocientifica.checked();
+  let gostaDeAventura = campoAventura.checked();
+  let gostaDeAnimacao = campoAnimacao.checked();
+  let recomendacao = geraRecomendacao(idade, gostaDeAnimacao, gostaDeAventura, gostaDeFiccaocientifica, gostaDeSuspense);//
+  
+  fill(color(255, 255, 255));//
+  textSize(35);//
+  textAlign(CENTER) ;//
+ text(recomendacao, width / 2, height / 2);
+}
+
+function geraRecomendacao(idade, gostaDeAnimacao, gostaDeAventura, gostaDeFiccaocientifica, gostaDeSuspense) {
+if(idade >=0) {
+ if(gostaDeAventura) {
+   return "como treinar seu dragão" ;
+ } else {
+   if(gostaDeAnimacao) {
+     return "o rei leão";
+   }
+ }
+  if(idade >= 10) {
+  if(idade >= 12) {
+    if(idade >= 14) {
+     if(gostaDeFiccaocientifica) {
+     return "five nights at freddys";
+        } else {
+    if(gostaDeSuspense) {
+    return "megatubarão";
+      }
+   }
+  if(idade >= 18) {
+  return "jogos mortais X";
+  }
+  return "venom tempo de carnificina";
+  }
+  return "vingadores ultimato"; 
+  }
+  return "homem aranha no aranhaverso";
+}
+return "viva a vida é uma festa";
+}
+   
+  
+  
+  
+} 
